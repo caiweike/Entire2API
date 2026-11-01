@@ -1,0 +1,18 @@
+services:
+  entire2api:
+    build: .
+    ports:
+      - "127.0.0.1:8080:8080"
+    environment:
+      GATEWAY_KEY_FILE: /run/secrets/gateway_key
+    volumes:
+      - ./.local/config.json:/data/config.json:ro
+      - entire2api-data:/data
+    secrets:
+      - gateway_key
+    restart: unless-stopped
+secrets:
+  gateway_key:
+    file: ./.local/gateway-key.txt
+volumes:
+  entire2api-data:

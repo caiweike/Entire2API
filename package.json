@@ -1,0 +1,32 @@
+{
+  "name": "entire2api",
+  "version": "0.2.0",
+  "private": true,
+  "description": "Entire review-job text adapter with OpenAI, Anthropic and local MCP interfaces",
+  "license": "MIT",
+  "repository": { "type": "git", "url": "https://github.com/caiweike/Entire2API.git" },
+  "bin": { "entire2api": "bin/entire2api.mjs" },
+  "files": ["bin/", "src/", "scripts/", "docs/", "examples/", "README.md", "INSTALL.md", "AGENTS.md", "LICENSE", ".env.example"],
+  "type": "module",
+  "engines": {
+    "node": ">=24"
+  },
+  "scripts": {
+    "start": "node --use-env-proxy src/main.mjs",
+    "test": "node --test --test-isolation=none",
+    "configure": "node --use-env-proxy scripts/configure.mjs",
+    "smoke": "node --use-env-proxy scripts/smoke.mjs",
+    "mcp": "node src/mcp.mjs",
+    "mcp:smoke": "node scripts/mcp-smoke.mjs",
+    "mcp:register": "node scripts/register-mcp.mjs",
+    "doctor": "node bin/entire2api.mjs doctor",
+    "mcp:config": "node bin/entire2api.mjs mcp-config"
+  },
+  "devDependencies": {
+    "@modelcontextprotocol/client": "2.4.0"
+  },
+  "dependencies": {
+    "@modelcontextprotocol/server": "2.4.0",
+    "zod": "4.6.7"
+  }
+}
